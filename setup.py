@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'dlpytools',
-    version = '0.0.1',
+    version = '0.0.2',
     keywords='tools',
     description = 'common tools',
     license = 'MIT License',
@@ -17,9 +17,4 @@ setup(
     packages = find_packages(),
     include_package_data = True,
     platforms = 'any',
-    install_requires = [
-        'requests>=2.19.1',
-        'pycrypto>=2.6.1',
-        'xmltodict>=0.11.0'
-        ],
 )

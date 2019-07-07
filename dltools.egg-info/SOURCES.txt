@@ -1,9 +1,0 @@
-README.md
-setup.py
-dltools/__init__.py
-dltools/tools.py
-dltools.egg-info/PKG-INFO
-dltools.egg-info/SOURCES.txt
-dltools.egg-info/dependency_links.txt
-dltools.egg-info/requires.txt
-dltools.egg-info/top_level.txt
