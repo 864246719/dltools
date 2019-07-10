@@ -55,7 +55,7 @@ def getFileList(path=cwd):
             fileList.append(each)
     return fileList
 
-def getAllDirFiles(cwd,fileList=[]):
+def listDirFiles(cwd,fileList=[]):
     pathList = os.listdir(cwd)
     dirList = []
     for each in pathList:
@@ -64,5 +64,5 @@ def getAllDirFiles(cwd,fileList=[]):
         if os.path.isfile(cwd+FPSLASH+each):
             fileList.append(cwd+FPSLASH+each)
     for path in dirList:
-        listAllFilesPath(path,fileList)
+        listDirFiles(path,fileList)
     return fileList
