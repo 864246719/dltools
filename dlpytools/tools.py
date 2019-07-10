@@ -55,3 +55,14 @@ def getFileList(path=cwd):
             fileList.append(each)
     return fileList
 
+def getAllDirFiles(cwd,fileList=[]):
+    pathList = os.listdir(cwd)
+    dirList = []
+    for each in pathList:
+        if os.path.isdir(cwd+FPSLASH+each):
+            dirList.append(cwd+FPSLASH+each)
+        if os.path.isfile(cwd+FPSLASH+each):
+            fileList.append(cwd+FPSLASH+each)
+    for path in dirList:
+        listAllFilesPath(path,fileList)
+    return fileList
