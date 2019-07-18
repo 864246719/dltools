@@ -1,68 +1,52 @@
 import os
 import sys
 
-# change path separator according to the os.
 osPlatform = sys.platform
 if osPlatform == 'win32':
     FPSLASH = '\\'
-if osPlatform == 'linux1' or osPlatform == 'linux2':
+if osPlatform == 'linux1' or osPlatform == 'linux2' or osPlatform == 'linux':
     FPSLASH = '/'
-    
-cwd = os.getcwd()
 
 
+def getAFiles(cwd='.',fileList=[]):
+  allPath = os.listdir(cwd)
+  dirs = []
+  for each in allPath:
+    path = cwd + FPSLASH + each
+    if os.path.isdir(path):
+      dirs.append(path)
+    if os.path.isfile(path):
+      fileList.append(path)
+  for each in dirs:
+    getAFiles(each,fileList)
+  return fileList
 
-# get all dir path in current directory,order by numbers ascend(assume index number in front of file name,and subsequent file name do not includes numbers)
-def getDirList(path=cwd):
-    dirList = []
-    allDir = os.listdir(path)
-    def getNum(val):
-        baseName = os.path.basename(val)
-        baseName = baseName.split('.')[0]
-        result = ''
-        for each in baseName:
-            if each.isdigit():
-                result = result + each
-        if result=='':
-            result=9999999
-        return result
-    allDir.sort(key=lambda f: int(getNum(f)))
-    for each in allDir:
-        each = path + FPSLASH + each
-        if os.path.isdir(each):
-            dirList.append(each)
-    return dirList
+def getADirs(cwd='.',dirList=[]):
+  allPath = os.listdir(cwd)
+  dirs = []
+  for each in allPath:
+    path = cwd + FPSLASH + each
+    if os.path.isdir(path):
+      dirs.append(path)
+      dirList.append(path)
+  for each in dirs:
+    getADirs(each,dirList)
+  return dirList
 
+def getCFiles(cwd='.'):
+  allPath = os.listdir(cwd)
+  files = []
+  for each in allPath:
+    path = cwd + FPSLASH + each
+    if os.path.isfile(path):
+      files.append(path)
+  return files
 
-# get all dir path in current directory,order by numbers ascend(assume index number in front of file name,and subsequent file name do not includes numbers)
-def getFileList(path=cwd):
-    fileList = []
-    allDir = os.listdir(path)
-    def getNum(val):
-        baseName = os.path.basename(val)
-        baseName = baseName.split('.')[0]
-        result = ''
-        for each in baseName:
-            if each.isdigit():
-                result = result + each
-        if result=='':
-            result=9999999
-        return result
-    allDir.sort(key=lambda f: int(getNum(f)))
-    for each in allDir:
-        each = path + FPSLASH + each
-        if os.path.isfile(each):
-            fileList.append(each)
-    return fileList
-
-def listDirFiles(cwd,fileList=[]):
-    pathList = os.listdir(cwd)
-    dirList = []
-    for each in pathList:
-        if os.path.isdir(cwd+FPSLASH+each):
-            dirList.append(cwd+FPSLASH+each)
-        if os.path.isfile(cwd+FPSLASH+each):
-            fileList.append(cwd+FPSLASH+each)
-    for path in dirList:
-        listDirFiles(path,fileList)
-    return fileList
+def getCDirs(cwd='.'):
+  allPath = os.listdir(cwd)
+  dirs = []
+  for each in allPath:
+    path = cwd + FPSLASH + each
+    if os.path.isdir(path):
+      dirs.append(path)
+  return dirs
