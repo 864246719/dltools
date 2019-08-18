@@ -1,0 +1,58 @@
+{
+  "inbound": {
+    "port": 8080,
+    "listen": "127.0.0.1",
+    "protocol": "http",
+    "settings": {
+      "timeout": 0,
+      "allowTransparent": false,
+      "userLevel": 0
+    },
+    "streamSettings": null
+  },
+  "inboundDetour": [
+    {
+      "port": 1080,
+      "listen": "127.0.0.1",
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": false,
+        "ip": "0.0.0.0"
+      },
+      "streamSettings": null
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "66.42.111.183",
+            "port": 20522,
+            "users": [{ "id": "543b3e2c-d607-4b93-ae71-6c3587ab1be4" }]
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "freedom",
+      "tag": "direct",
+      "settings": {}
+    }
+  ],
+  "routing": {
+    "strategy": "rules",
+    "settings": {
+      "domainStrategy": "IPOnDemand",
+      "rules": [
+        {
+          "type": "field",
+          "ip": ["geoip:private"],
+          "outboundTag": "direct"
+        }
+      ]
+    }
+  }
+}
