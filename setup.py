@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'dlpytools',
-    version = '0.0.7',
+    version = '0.1.2',
     keywords='tools',
     description = 'common tools',
     license = 'MIT License',
