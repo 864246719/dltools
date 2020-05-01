@@ -50,3 +50,10 @@ def getCDirs(cwd='.'):
     if os.path.isdir(path):
       dirs.append(path)
   return dirs
+
+# copy file from src1 to src2
+def copy(src1,src2):
+    with open(src1,'rb') as f:
+        data = f.read()
+    with open(src2,'wb') as f:
+        f.write(data)

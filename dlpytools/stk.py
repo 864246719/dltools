@@ -10,7 +10,24 @@ data = data["data"]["diff"]
 stkList = {}
 
 for each in data:
-    stkList[each["f12"]] = each["f14"]
+    stkList[each["f12"]] = {} 
+    stkList[each["f12"]]["name"] = each['f14']
+    stkList[each["f12"]]['price'] = each['f2']
+    stkList[each["f12"]]['per'] = each['f9']
+    stkList[each["f12"]]['mktCap'] = each['f20']
+    stkList[each["f12"]]['flowCap'] = each['f21']
+    stkList[each["f12"]]['market'] = each['f13']    
+
 def getStkName(code):
-    return stkList[code]
+    return stkList[code]["name"]
+def getPrice(code):
+    return stkList[code]["price"]
+def getPer(code):
+    return stkList[code]["per"]
+def getMktCap(code):
+    return stkList[code]["mktCap"]
+def getFlowCap(code):
+    return stkList[code]["flowCap"]
+def getMarketId(code):
+    return stkList[code]['market']
 
