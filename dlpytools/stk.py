@@ -17,6 +17,13 @@ for each in data:
     stkList[each["f12"]]['mktCap'] = each['f20']
     stkList[each["f12"]]['flowCap'] = each['f21']
     stkList[each["f12"]]['market'] = each['f13']    
+    stkList[each["f12"]]['amount'] = each['f6']    
+    stkList[each["f12"]]['amplitude'] = each['f7']    
+    stkList[each["f12"]]['high'] = each['f15']    
+    stkList[each["f12"]]['low'] = each['f16']    
+    stkList[each["f12"]]['open'] = each['f17']    
+    stkList[each["f12"]]['turnoverRate'] = each['f8']    
+    stkList[each["f12"]]['vol'] = each['f5']    
 
 def getStkName(code):
     return stkList[code]["name"]
@@ -30,4 +37,17 @@ def getFlowCap(code):
     return stkList[code]["flowCap"]
 def getMarketId(code):
     return stkList[code]['market']
-
+def getAmount(code):
+    return stkList[code]['amount']
+def getAmplitude(code):
+    return stkList[code]['amplitude']
+def getHigh(code):
+    return stkList[code]['high']
+def getLow(code):
+    return stkList[code]['low']
+def getOpen(code):
+    return stkList[code]['open']
+def getTurnoverRate(code):
+    return stkList[code]['turnoverRate']
+def getVol(code):
+    return stkList[code]['vol']
