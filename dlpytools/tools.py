@@ -1,5 +1,6 @@
 import os
 import sys
+import time 
 
 osPlatform = sys.platform
 if osPlatform == 'win32':
@@ -57,3 +58,9 @@ def copy(src1,src2):
         data = f.read()
     with open(src2,'wb') as f:
         f.write(data)
+def getDate():
+    localtime = time.localtime()
+    monthStr = str(localtime[1]) if localtime[1] >= 10 else "0"+str(localtime[1])
+    dateStr = str(localtime[2]) if localtime[2] >= 10 else "0"+str(localtime[2])
+    timeString = f"{str(localtime[0])}-{monthStr}-{dateStr}"
+    return timeString
